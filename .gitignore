@@ -1,0 +1,3 @@
+#Exclude environment files but include example environment files
+*.env
+!*.example.env

@@ -1,0 +1,17 @@
+name: cuddly-waffle
+
+services:
+  front-end:
+    build:
+      dockerfile: front-end.dockerfile
+      context: ./front-end
+    ports:
+      - 8080:3000
+
+  database:
+    build:
+      dockerfile: postgres-local.dockerfile
+      context: ./database
+    env_file: ./database/database.local.env
+    ports:
+      - 5431:5432
