@@ -12,6 +12,6 @@ services:
     build:
       dockerfile: postgres-local.dockerfile
       context: ./database
-    env_file: ./database/database.local.env
+    env_file: ./database/database_local.env
     ports:
       - 5431:5432
