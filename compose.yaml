@@ -12,7 +12,6 @@ services:
     build:
       dockerfile: postgres-local.dockerfile
       context: ./database
-    environment:
-      - POSTGRES_PASSWORD=password
+    env_file: ./database/database.local.env
     ports:
       - 5431:5432
