@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <h1>Cuddly Waffle</h1>
-      <Suspense>
+      <Suspense fallback={<p>loading...</p>}>
         <SuggestionCard />
       </Suspense>
     </div>
