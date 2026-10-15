@@ -1,0 +1,42 @@
+[
+    {
+        "suggestion_id": "test001",
+        "suggestion_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus.",
+        "involvement_flag": "No",
+        "suggester_email": "",
+        "suggester_name": "",
+        "votes": 0
+    },
+    {
+        "suggestion_id": "test002",
+        "suggestion_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et.",
+        "involvement_flag": "Maybe",
+        "suggester_email": "joe.bloggs@example.com",
+        "suggester_name": "Joe Bloggs",
+        "votes": 3
+    },
+    {
+        "suggestion_id": "test003",
+        "suggestion_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum.",
+        "involvement_flag": "No",
+        "suggester_email": "",
+        "suggester_name": "",
+        "votes": 1
+    },
+    {
+        "suggestion_id": "test004",
+        "suggestion_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed.",
+        "involvement_flag": "Yes",
+        "suggester_email": "jane.doe@example.com",
+        "suggester_name": "Jane Doe",
+        "votes": 0
+    },
+    {
+        "suggestion_id": "test005",
+        "suggestion_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis.",
+        "involvement_flag": "No",
+        "suggester_email": "",
+        "suggester_name": "",
+        "votes": 27
+    }
+]

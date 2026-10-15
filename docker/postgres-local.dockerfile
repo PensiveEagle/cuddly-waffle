@@ -1,7 +1,7 @@
-FROM postgres:alpine
+FROM postgres
 
 WORKDIR /database
 
 COPY ./database .
 
-COPY ./database/scripts/init.sh /docker-entrypoint-initdb.d
+COPY ./database/scripts/seed.sh /docker-entrypoint-initdb.d
