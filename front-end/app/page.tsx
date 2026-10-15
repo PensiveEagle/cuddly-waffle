@@ -1,13 +1,11 @@
-
-import { Suspense } from 'react';
-import SuggestionCard from './ui/suggestion-card';
+import { Suspense } from "react";
+import SuggestionList from "./ui/suggestions/SuggestionList";
 
 export default function Home() {
   return (
     <div>
-      <h1>Cuddly Waffle</h1>
-      <Suspense fallback={<p>loading...</p>}>
-        <SuggestionCard />
+      <Suspense fallback={<p>Loading...</p>}>
+        <SuggestionList />
       </Suspense>
     </div>
   );
