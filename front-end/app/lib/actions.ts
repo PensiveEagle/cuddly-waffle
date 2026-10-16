@@ -9,7 +9,8 @@ export async function getSuggestions() {
         const suggestions = await sql<Suggestion[]>`
         SELECT
             suggestion_id,
-            suggestion_details
+            suggestion_details,
+            votes
         FROM
             suggestions;
         `
