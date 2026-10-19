@@ -4,7 +4,7 @@ import SuggestionForm from "@/app/ui/suggestions/SuggestionForm";
 
 export default function Home() {
   return (
-    <div className="inline-flex flex-row">
+    <div className="inline-flex flex-row bg-gray-200">
       <div className="w-1/3 mr-2">
         <SuggestionForm />
       </div>
