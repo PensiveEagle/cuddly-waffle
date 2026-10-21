@@ -1,23 +1,15 @@
-"use server";
-
 import sql from '@/app/lib/data';
-import { Suggestion } from './definitions';
-
 
 export async function getSuggestions() {
-    try {
-        const suggestions = await sql<Suggestion[]>`
+    
+    const query = `
         SELECT
-            suggestion_id,
-            suggestion_details,
-            votes
+          *
         FROM
-            suggestions;
-        `
+          suggestions;
+    `
 
-        return suggestions
-    } catch (error) {
-        console.error('Database Error:', error);
-        throw new Error('Failed to fetch revenue data.');
-    }
+    const data = await sql`${query}`
+    
+    return data
 }
