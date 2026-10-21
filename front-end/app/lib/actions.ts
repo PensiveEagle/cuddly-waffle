@@ -1,3 +1,5 @@
+'use server';
+
 import sql from '@/app/lib/data';
 
 export async function getSuggestions() {
@@ -10,6 +12,6 @@ export async function getSuggestions() {
     `
 
     const data = await sql`${query}`
-    
+
     return data
 }
