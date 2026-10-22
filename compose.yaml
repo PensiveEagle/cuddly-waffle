@@ -6,11 +6,13 @@ services:
       dockerfile: ./docker/front-end.dockerfile
     env_file: .env.local
     ports:
-      - 8080:3000
+      - "8080:3000"
+    depends_on:
+      - database
 
   database:
     build:
       dockerfile: ./docker/postgres-local.dockerfile
     env_file: .env.local
     ports:
-      - 5431:5432
+      - "5431:5432"

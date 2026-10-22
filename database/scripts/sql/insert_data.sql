@@ -1,9 +1,20 @@
-INSERT INTO suggestions ( suggestion_id, suggestion_details, involvement_flag, suggester_email, suggester_name )
+INSERT INTO suggestions ( suggestion_id, suggestion_details, involvement_flag, suggester_email, suggester_name, votes )
 VALUES
-    ( 'test000', 'test', 'Yes', 'test@example.gov.uk', 'test' ),
-    ( 'test001', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus.', 'No', '', '' ),
-    ( 'test002', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et.', 'Maybe', 'joe.bloggs@example.com', 'Joe Bloggs' ),
-    ( 'test003', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum.', 'No', '', '' ),
-    ( 'test004', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed.', 'Yes', 'jane.doe@example.com', 'Jane Doe' ),
-    ( 'test005', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis.', 'No', '', '' );
+    ( 'test000', 'test', 'Yes', 'test@example.gov.uk', 'test', '0' );
 
+WITH json_data AS (
+    SELECT
+        jsonb_array_elements(
+            (SELECT pg_read_file('/database/data/dummy_data.json')::jsonb)
+        ) AS data
+)
+INSERT INTO suggestions ( suggestion_id, suggestion_details, involvement_flag, suggester_email, suggester_name, votes )
+SELECT
+    (data->>'suggestion_id')::VARCHAR,
+    (data->>'suggestion_details')::VARCHAR,
+    (data->>'involvement_flag')::VARCHAR,
+    (data->>'suggester_email')::VARCHAR,
+    (data->>'suggester_name')::VARCHAR,
+    (data->>'votes')::INTEGER
+FROM
+    json_data;
