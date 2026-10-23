@@ -47,7 +47,9 @@ jobs:
               run: npm run build
 
             - name: Run front-end
-              run: npm run start
+              run: |
+                npm run start
+                ^C
     
 
     # build_and_run_docker_image:
