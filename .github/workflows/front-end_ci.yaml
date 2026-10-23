@@ -16,35 +16,35 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    build_nextjs:
-        runs-on: ubuntu-latest
+    # build_nextjs:
+    #     runs-on: ubuntu-latest
 
-        defaults:
-            run:
-                working-directory: ./front-end
+    #     defaults:
+    #         run:
+    #             working-directory: ./front-end
     
-        steps:
-            - name: Checkout branch
-              uses: actions/checkout@v7.0.1
+    #     steps:
+    #         - name: Checkout branch
+    #           uses: actions/checkout@v7.0.1
             
-            - name: Setup node
-              uses: actions/setup-node@v7.1.0
-              with:
-                node-version: 26
+    #         - name: Setup node
+    #           uses: actions/setup-node@v7.1.0
+    #           with:
+    #             node-version: 26
 
-            - name: Cache dependancies
-              uses: actions/cache@v6.1.0
-              id: cache
-              with: 
-                path: node_modules
-                key: ${{ runner.os }}-modules-${{ hashFiles('package-lock.json') }}
+    #         - name: Cache dependancies
+    #           uses: actions/cache@v6.1.0
+    #           id: cache
+    #           with: 
+    #             path: node_modules
+    #             key: ${{ runner.os }}-modules-${{ hashFiles('package-lock.json') }}
 
-            - name: install-dependancies
-              run: npm i
-              if: steps.cache.outputs.cache-hit != 'true'
+    #         - name: install-dependancies
+    #           run: npm i
+    #           if: steps.cache.outputs.cache-hit != 'true'
 
-            - name: Build front-end
-              run: npm run build
+    #         - name: Build front-end
+    #           run: npm run build
     
 
     build_and_run_docker_image:
