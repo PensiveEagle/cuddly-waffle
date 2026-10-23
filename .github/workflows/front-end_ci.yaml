@@ -28,6 +28,9 @@ jobs:
               with:
                 node-version: 26
 
+            - name: Change directory
+              run: cd front-end
+
             - name: Cache dependancies
               uses: actions/cache@v6.1.0
               id: cache
@@ -58,6 +61,9 @@ jobs:
 
             - name: Docker Setup Buildx
               uses: docker/setup-buildx-action@v4
+
+            - name: Check contents
+              run: ls -a
 
             - name: Build and export to Docker
               uses: docker/build-push-action@v7
