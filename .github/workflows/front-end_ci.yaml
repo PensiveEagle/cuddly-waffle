@@ -31,6 +31,9 @@ jobs:
             - name: Change directory
               run: cd front-end
 
+            - name: Check location
+              run: pwd
+
             - name: Cache dependancies
               uses: actions/cache@v6.1.0
               id: cache
