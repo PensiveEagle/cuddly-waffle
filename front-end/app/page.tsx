@@ -6,7 +6,7 @@ export default function Home() {
       <Grid container spacing={2}>
         <Grid size={5}>
           <Box>
-            <h1>Form here... Some test text... and some more</h1>
+            <h1>Form here...</h1>
           </Box>
         </Grid>
         <Grid size={7}>
