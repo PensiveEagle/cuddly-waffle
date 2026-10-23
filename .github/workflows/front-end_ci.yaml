@@ -28,11 +28,11 @@ jobs:
               with:
                 node-version: 26
 
-            - name: Change directory
-              run: cd front-end
-
             - name: Check location
               run: pwd
+
+            - name: Check contents
+              run: ls -a
 
             - name: Cache dependancies
               uses: actions/cache@v6.1.0
