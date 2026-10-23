@@ -1,14 +1,14 @@
-name: Continuous Integration Workflow
+name: Continuous Integration Workflow for Front-end
 
 on:
     pull_request:
         branches: [main]
         paths:
-            - '/front-end/*'
+            - '/database/*'
     push:
         branches: [main]
         paths:
-            - '/front-end/*'
+            - '/database/*'
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
@@ -61,6 +61,8 @@ jobs:
             - name: Build and export to Docker
               uses: docker/build-push-action@v7
               with:
+                context: .
+                file: ./docker/front-end.dockerfile
                 load: true
                 tags: test-image:test
 
