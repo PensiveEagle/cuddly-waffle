@@ -22,16 +22,24 @@ jobs:
             - name: Checkout branch
               uses: actions/checkout@v7.0.1
 
+            # - name: Create test env file
+            #   uses: SpicyPizza/create-envfile@v2.0
+            #   with:
+            #     envkey_POSTGRES_HOST: database
+            #     envkey_POSTGRES_PORT: 5432
+            #     envkey_POSTGRES_DB: gh_actions_test
+            #     envkey_POSTGRES_USER: ghactionstest
+            #     envkey_POSTGRES_PASSWORD: ghactionstest
+            #     file_name: .env.local
+            #     fail_on_empty: true
+
             - name: Create test env file
-              uses: SpicyPizza/create-envfile@v2.0
-              with:
-                envkey_POSTGRES_HOST: database
-                envkey_POSTGRES_PORT: 5432
-                envkey_POSTGRES_DB: gh_actions_test
-                envkey_POSTGRES_USER: ghactionstest
-                envkey_POSTGRES_PASSWORD: ghactionstest
-                file_name: .env.local
-                fail_on_empty: true
+              run: |
+                echo "POSTGRES_HOST=database" >> .env.local
+                echo "POSTGRES_PORT=5432" >> .env.local
+                echo "POSTGRES_DB=gh_actions_test" >> .env.local
+                echo "POSTGRES_USER=ghactionstest" >> .env.local
+                echo "POSTGRES_PASSWORD=ghactionstest" >> .env.local
 
             - name: Docker Compose
               run: |
