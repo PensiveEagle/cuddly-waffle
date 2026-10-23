@@ -16,46 +16,10 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    build_and_run_nextjs:
-        runs-on: ubuntu-latest
-    
-        steps:
-            - name: Checkout branch
-              uses: actions/checkout@v7.0.1
-            
-            - name: Setup node
-              uses: actions/setup-node@v7.1.0
-              with:
-                node-version: 26
-
-            - name: Cache dependancies
-              uses: actions/cache@v6.1.0
-              id: cache
-              with: 
-                path: node_modules
-                key: ${{ runner.os }}-modules-${{ hashFiles('package-lock.json') }}
-
-            - name: install-dependancies
-              run: npm i
-              if: steps.cache.outputs.cache-hit != 'true'
-
-            - name: Build front-end
-              run: npm run build
-
-            - name: Run front-end
-              run: npm run start
-    
-
     build_and_run_docker_image:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Login to Docker Hub
-              uses: docker/login-action@v4
-              with:
-                username: ${{ vars.DOCKERHUB_USERNAME }}
-                password: ${{ secrets.DOCKERHUB_TOKEN }}
-
             - name: Docker Setup Buildx
               uses: docker/setup-buildx-action@v4
 
@@ -69,5 +33,9 @@ jobs:
 
             - name: Test image
               run: |
-                docker run --rm test-image:test
+                docker run --name test-container --rm -d test-image:test
+                docker ps -a
+                sleep 10
+                docker ps -a
+                docker stop test-container
             
