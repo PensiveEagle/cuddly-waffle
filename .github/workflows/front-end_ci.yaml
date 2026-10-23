@@ -62,10 +62,7 @@ jobs:
 
             - name: Checkout branch
               uses: actions/checkout@v7.0.1
-
-            - name: Check location
-              run: pwd
-
+              
             - name: Build and export to Docker
               uses: docker/build-push-action@v7
               with:
@@ -74,7 +71,9 @@ jobs:
                 load: true
                 tags: test-image:test
 
-            - name: Test image
+            - name: Start container test
               run: |
-                docker run --rm test-image:test
+                docker run --name test-container --rm -d test-image:test
+                docker ps -a
+                docker stop test-container
             
