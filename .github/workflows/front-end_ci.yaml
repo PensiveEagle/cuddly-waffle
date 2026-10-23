@@ -65,6 +65,9 @@ jobs:
             - name: Check contents
               run: ls -a
 
+            - name: Check location
+              run: pwd
+
             - name: Build and export to Docker
               uses: docker/build-push-action@v7
               with:
