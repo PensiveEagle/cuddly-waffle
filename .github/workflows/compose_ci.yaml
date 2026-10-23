@@ -2,13 +2,13 @@ name: Continuous Integration for Docker Changes
 
 on:
     pull_request:
-        branches: [main]
+        branches: main
         paths:
             - './docker/*'
     push:
         branches: [main]
         paths:
-            - './docker/*'
+            - 'docker/**'
     workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
 
             - name: Checkout branch
               uses: actions/checkout@v7.0.1
-              
+
             - name: Create test env file
               run: |
                 echo "POSTGRES_HOST=database" >> .env.local
