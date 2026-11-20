@@ -1,3 +1,8 @@
+export type SuggestionField = {
+    suggestion_id: string,
+    suggestion_details: string
+}
+
 export type Suggestion = {
     suggestion_id: string,
     suggestion_details: string,

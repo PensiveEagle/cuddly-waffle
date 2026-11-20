@@ -2,14 +2,20 @@ name: Continuous Integration for Docker Changes
 
 on:
     pull_request:
-        branches: main
+        branches:
+            - main
         paths:
             - './docker/*'
     push:
-        branches: [main]
+        branches:
+            - main
         paths:
             - 'docker/**'
     workflow_dispatch:
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+    cancel-in-progress: true
 
 jobs:
     docker_compose_tests:
